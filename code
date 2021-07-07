@@ -31,23 +31,26 @@ int main()
 {
 	setlocale(LC_ALL, "rus");
 	enter:
-	char begin[3], end[3];
+	int kx, dx, ky, dy;
+	
 	printf("Введите начальную позицию короля: ");
-	fgets(begin, 3, stdin);
+	kx=getchar();
+	ky = getchar();
 	getchar();
 	printf("Введите клетку назначения короля: ");
-	fgets(end, 3, stdin);
+	dx = getchar();
+	dy = getchar();
 	getchar();
-	int kx, dx, ky, dy;
+	
 	int check=0;
 	for (int i = 0; i < 8; i++)
 	{
-		if (begin[0] == lit[i]) { kx = i; check++; }
+		if (kx == lit[i]) { kx = i; check++; }
 
-		if (end[0] == lit[i]) { dx = i; check++; }
+		if (dx == lit[i]) { dx = i; check++; }
 	}
-	ky = begin[1]-'0';
-	dy = end[1]-'0';
+	ky -= '0';
+	dy -= '0';
 	
 	
 	if (ky < 1 || ky>8 || dy < 1 || dy>8 || check != 2)
